@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import OtherPage from './components/OtherPage';
+import Testform from './components/Testform';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/otherpage' component={OtherPage} />
+          <Route path='/testform' component={Testform} />
         </Switch>
       </div>
     </Router>

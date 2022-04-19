@@ -15,7 +15,8 @@ const Header = () => {
             <div>
               <nav>
                 <Link to='/'>Home</Link> |
-                <Link to='/otherpage'>OtherPage</Link>
+                <Link to='/otherpage'>OtherPage</Link> |
+                <Link to='/testform'>Testform</Link>
               </nav>
             </div>
           </Router>

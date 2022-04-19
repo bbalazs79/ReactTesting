@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.form-submit {
+    max-width: 200px;
+    margin: 10px auto;
+    
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+}
