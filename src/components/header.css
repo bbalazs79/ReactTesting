@@ -1,0 +1,33 @@
+.navbar {
+    position: sticky;
+    top: 0;
+
+    height: 60px;
+    background-color: black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-user {
+    background-color: greenyellow;
+    color: black;
+    
+    border: none;
+    border-radius: 50%;
+    
+    margin: 0 10px;
+
+    width: 30px;
+    height: 30px;
+
+    font-weight: bold;
+}
+
+.navbar-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
