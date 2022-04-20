@@ -1,0 +1,16 @@
+.title {
+    font-size: 100px;
+    color: darkorange;
+    margin: 0 auto;
+}
+
+.description {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icon-sad-face {
+    font-size: 200px;
+    color: #dfdfdf;
+    margin-top: 20px;
+}

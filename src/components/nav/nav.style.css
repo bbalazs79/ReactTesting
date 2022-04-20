@@ -1,0 +1,24 @@
+ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.nav-item {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    transition-duration: 300ms;
+}
+
+.nav-item:hover {
+    font-size: 20px;
+    color: #dfdfdf;
+    transition-duration: 300ms;
+}

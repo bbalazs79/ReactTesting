@@ -1,4 +1,4 @@
-import './header.css';
+import './header.style.css';
 import logo from '../../assets/img/logo.png';
 import { useState } from 'react';
 import Nav from '../nav/nav.component';

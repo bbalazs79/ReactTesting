@@ -1,9 +1,0 @@
-ul {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-li {
-    list-style: none;
-}
