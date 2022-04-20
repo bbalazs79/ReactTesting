@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import OtherPage from './components/OtherPage';
-import Testform from './components/Testform';
+import Header from './components/header/Header';
+import Home from './components/home/Home';
+import OtherPage from './components/otherpage/OtherPage';
+import Testform from './components/testform/Testform';
 
 
 function App() {
@@ -12,12 +12,11 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <h1>Hello From React</h1>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/otherpage' component={OtherPage} />
-          <Route path='/testform' component={Testform} />
-        </Switch>
+        <Routes>
+        <Route path='/' element={<Home />} />
+          <Route path='/otherpage' element={<OtherPage />} />
+          <Route path='/testform' element={<Testform />} />
+        </Routes>
       </div>
     </Router>
   );

@@ -1,26 +1,17 @@
 import './header.css';
-import logo from '../assets/img/logo.png';
+import logo from '../../assets/img/logo.png';
 import { useState } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Nav from '../nav/nav.component';
+
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <header>
         <div className='navbar'>
-          <img src={logo} alt=''/>
-
-          <Router>
-            <div>
-              <nav>
-                <Link to='/'>Home</Link> |
-                <Link to='/otherpage'>OtherPage</Link> |
-                <Link to='/testform'>Testform</Link>
-              </nav>
-            </div>
-          </Router>
-
+          <img src={logo}/>
+          <Nav />
           <div>
             {isLoggedIn && <button className='navbar-user'>BB</button>}
             { isLoggedIn ? <button onClick={()=>{setIsLoggedIn(!isLoggedIn)}} className='navbar-btn'>Logout</button> : <button onClick={()=>{setIsLoggedIn(!isLoggedIn)}} className='navbar-btn'>Login</button> }
