@@ -11,6 +11,7 @@ li {
 
 .nav-item {
     font-size: 16px;
+    padding: 0 10px;
     font-weight: bold;
     text-decoration: none;
     color: #ffffff;

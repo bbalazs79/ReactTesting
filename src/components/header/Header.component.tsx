@@ -1,23 +1,32 @@
 import './header.style.css';
 import logo from '../../assets/img/logo.png';
-import { useState } from 'react';
 import Nav from '../nav/nav.component';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  function checkUserIsLoggedIn(): boolean {
+    if(localStorage.getItem('isLoggedIn') === 'true') {
+      return true;
+    }
+    return false;
+  }
+
+  function logout() {
+    localStorage.setItem('isLoggedIn','false');
+    window.location.href='/login';
+  }
 
   return (
     <header>
         <div className='navbar'>
-          <img src={logo}/>
+          <img src={logo} alt='' />
           <Nav />
           <div>
-            {isLoggedIn && <button className='navbar-user'>BB</button>}
-            { isLoggedIn ? <button onClick={()=>{setIsLoggedIn(!isLoggedIn)}} className='navbar-btn'>Logout</button> : <button onClick={()=>{setIsLoggedIn(!isLoggedIn)}} className='navbar-btn'>Login</button> }
+            { checkUserIsLoggedIn() && <button className='navbar-user'>{localStorage.getItem('username')?.at(0)?.toUpperCase()}</button> }
+            { checkUserIsLoggedIn() ? <button onClick={logout} className='navbar-btn' >Logout</button> : <Link className="nav-item" to='/login'>Login</Link> }
           </div>
-        </div>
-          
+        </div>      
     </header>
   );
 }
