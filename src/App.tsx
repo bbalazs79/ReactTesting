@@ -8,33 +8,31 @@ import PageNotFound from './components/page-not-found/page-not-found.component';
 import Testform from './components/testform/Testform.component';
 import BeerDetails from './components/beer/BeerDetails.component';
 import { useState } from 'react';
-import { BeerContext } from './contexts/Beer.context';
+import { GlobalProvider } from './contexts/GlobalState';
 
 
 function App() {
   const [beers, setBeers] = useState();
 
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div className='main-content'>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <BeerContext.Provider value={{beers, setBeers}}>
+    <GlobalProvider>
+      <Router>
+        <div className="App">
+          <Header />
+          <div className='main-content'>
+          <Routes>
+            <Route path='/' element={<Home />} />
             <Route path='/beer' element={<BeerListView />} />
-          </BeerContext.Provider>
-          <Route path='/testform' element={<Testform />} />
-          <Route path='/login' element={<Login />} />
-          <BeerContext.Provider value={{beers, setBeers}}>
-            {<Route path='/beer/details/:id' element={<BeerDetails />} />} 
-          </BeerContext.Provider>
-          <Route path='/pagenotfound' element={<PageNotFound />} />
-          <Route path="*" element={<Navigate to="/pagenotfound" replace />} />
-        </Routes>
+            <Route path='/testform' element={<Testform />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/beer/details/:id' element={<BeerDetails />} />
+            <Route path='/pagenotfound' element={<PageNotFound />} />
+            <Route path="*" element={<Navigate to="/pagenotfound" replace />} />
+          </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </GlobalProvider>
   );
 }
 

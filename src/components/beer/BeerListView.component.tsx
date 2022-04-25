@@ -1,12 +1,14 @@
-import axios from "axios";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import './beer.style.css';
-import { BeerContext } from "../../contexts/Beer.context";
+import { GlobalContext } from "../../contexts/GlobalState";
 
 const BeerListView = () => {
-    const { beers, setBeers } = useContext<any>(BeerContext);
+    //const [beers, setBeers] = useState<any[]>([]);
+    const { beers } = useContext(GlobalContext);
 
-    useEffect(()=>{
+    console.log(beers);
+
+   /* useEffect(()=>{
         axios.get('https://api.punkapi.com/v2/beers', {})
         .then(res => {
             setBeers(res.data);
@@ -14,11 +16,11 @@ const BeerListView = () => {
         .catch(error =>{
             console.log(error);
         })
-    }, []);
+    }, []); */
 
     return (
         <div className="beer-container">
-            {beers.map((beer: any)=>(
+            {beers.map(beer=>(
                 <div className="card" key={beer.id}>
                     <img className="card-img" src={beer.image_url} alt="" />
                     <h4 className="card-name">{beer.name}</h4>
