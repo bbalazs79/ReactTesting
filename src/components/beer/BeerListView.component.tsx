@@ -4,7 +4,7 @@ import './beer.style.css';
 import { BeerContext } from "../../contexts/Beer.context";
 
 const BeerListView = () => {
-    const { beers, setBeers } = useContext(BeerContext);
+    const { beers, setBeers } = useContext<any>(BeerContext);
 
     useEffect(()=>{
         axios.get('https://api.punkapi.com/v2/beers', {})
@@ -18,7 +18,7 @@ const BeerListView = () => {
 
     return (
         <div className="beer-container">
-            {beers.map(beer=>(
+            {beers.map((beer: any)=>(
                 <div className="card" key={beer.id}>
                     <img className="card-img" src={beer.image_url} alt="" />
                     <h4 className="card-name">{beer.name}</h4>

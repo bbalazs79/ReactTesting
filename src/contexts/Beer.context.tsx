@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const BeerContext = createContext([]);
+export const BeerContext = createContext<any>(null);
