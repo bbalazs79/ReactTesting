@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import './beer.style.css';
+import { BeerContext } from "../../contexts/Beer.context";
 
 const BeerListView = () => {
-    const [beers, setBeers] = useState<any[]>([]);
+    const { beers, setBeers } = useContext(BeerContext);
 
     useEffect(()=>{
         axios.get('https://api.punkapi.com/v2/beers', {})
@@ -13,7 +14,7 @@ const BeerListView = () => {
         .catch(error =>{
             console.log(error);
         })
-    });
+    }, []);
 
     return (
         <div className="beer-container">
