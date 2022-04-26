@@ -13,7 +13,7 @@ export default (state: any, action: any) => {
         case 'REPLACE_BEERS':
             return {
                 ...state,
-                beers: [action.payload]
+                beers: action.payload
             }
         case 'ADD_BEERS_TO_ARRAY':
             return {

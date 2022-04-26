@@ -3,10 +3,11 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 30px;
 
-    margin: 15px 0;
+    margin: 15px auto;
 }
 
 .card {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,4 +28,33 @@
 .card-name {
     text-align: center;
     margin: 1px 0 0 0;
+}
+
+@media screen and (max-width: 1300px) {
+    .beer-container {
+        max-width: 950px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .beer-container {
+        max-width: 720px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 760px) {
+    .beer-container {
+        max-width: 500px;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .beer-container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }

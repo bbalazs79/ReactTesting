@@ -19,7 +19,7 @@ const BeerListView = () => {
     return (
       <div className="beer-container">
         {beers.map(beer=>(
-            <div className="card" key={beer.id}>
+            <div className="card" key={beer.id} onClick={()=>window.location.href=`/beer/details/${beer.id}`} >
                 <img className="card-img" src={beer.image_url} alt="" />
                 <h4 className="card-name">{beer.name}</h4>
                 <p>ABV: { beer.abv }%</p>

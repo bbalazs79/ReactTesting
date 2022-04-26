@@ -33,4 +33,17 @@
     border: none;
     color: #ffffff;
     cursor: pointer;
+
+    font-size: 16px;
+    padding: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    transition-duration: 300ms;
+}
+
+.navbar-btn:hover {
+    font-size: 20px;
+    color: #dfdfdf;
+    transition-duration: 300ms;
 }
