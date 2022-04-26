@@ -10,6 +10,16 @@ export default (state: any, action: any) => {
                 ...state,
                 beers: [...state.beers, action.payload]
             }
+        case 'REPLACE_BEERS':
+            return {
+                ...state,
+                beers: [action.payload]
+            }
+        case 'ADD_BEERS_TO_ARRAY':
+            return {
+                ...state,
+                beers: [...state.beers, ...action.payload]
+            }
         default: 
             return state;
     }

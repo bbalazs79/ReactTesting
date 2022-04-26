@@ -1,7 +1,8 @@
 import { createContext, useReducer } from 'react';
+import { IBeerContext } from '../interfaces/IBeerContext.interface';
 import AppReducer from './AppReducer';
 
-const initialState = {
+const initialState: IBeerContext = {
     beers: [{
         "id": 1,
         "name": "Buzz",
@@ -123,7 +124,8 @@ const initialState = {
         ],
         "brewers_tips": "The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.",
         "contributed_by": "Sam Mason <samjbmason>"
-    }]
+    }],
+    replaceBeers: ()=>{}
 }
 
 export const GlobalContext = createContext(initialState);
@@ -131,22 +133,36 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ( { children }: any ) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
-    function deleteBeer(id: number) {
+    function deleteBeer(id: number): void {
         dispatch({
             type: 'DELETE_BEER',
             payload: id
         });
     }
 
-    function addBeer(beer: any) {
+    function addBeer(beer: any): void {
         dispatch({
             type: 'ADD_BEER',
             payload: beer
         });
     }
 
+    function replaceBeers(beers: any[]): void {
+        dispatch({
+            type: 'REPLACE_BEERS',
+            payload: beers
+        })
+    }
+
+    function addBeersToArray(beers: any[]): void {
+        dispatch({
+            type: 'ADD_BEERS_TO_ARRAY',
+            payload: beers
+        })
+    }
+
     return (
-    <GlobalContext.Provider value={{beers: state.beers, deleteBeer, addBeer}}>
+    <GlobalContext.Provider value={{beers: state.beers, deleteBeer, addBeer, replaceBeers, addBeersToArray }}>
         {children}
     </GlobalContext.Provider>)
 }
