@@ -1,0 +1,25 @@
+.add-transaction-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 405px;
+    margin: auto;
+}
+
+.add-transaction-content-btn {
+    color: #ffffff;
+    background-color: darkslateblue;
+
+    font-weight: bold;
+
+    padding: 10px;
+    margin-top:10px;
+
+    border: none;
+    border-radius: 1px;
+}
+
+.add-transaction-content-btn:hover {
+    background-color: darkslategray;
+}

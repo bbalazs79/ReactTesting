@@ -10,7 +10,6 @@ const Testform = () => {
             'firstName': firstName,
             'lastName': lastName,
         }
-        console.log(data);
     }
 
     return (

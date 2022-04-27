@@ -1,8 +1,8 @@
 import { createContext, useReducer } from 'react';
-import { IBeerContext } from '../interfaces/IBeerContext.interface';
+import { IGlobalContext, ITransaction } from '../interfaces/IGlobalContext.interface';
 import AppReducer from './AppReducer';
 
-const initialState: IBeerContext = {
+const initialState: IGlobalContext = {
     beers: [{
         "id": 1,
         "name": "Buzz",
@@ -125,7 +125,18 @@ const initialState: IBeerContext = {
         "brewers_tips": "The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.",
         "contributed_by": "Sam Mason <samjbmason>"
     }],
-    replaceBeers: ()=>{}
+    deleteBeer:() => {},
+    addBeer: () => {},
+    replaceBeers: () => {},
+    auth: {
+        username: '',
+        isLoggedIn: false,
+    },
+    login: () => {},
+    logout: () => {},
+    transactions: [],
+    addTransaction: () => {},
+    removeTransaction: () => {},
 }
 
 export const GlobalContext = createContext(initialState);
@@ -136,33 +147,72 @@ export const GlobalProvider = ( { children }: any ) => {
     function deleteBeer(id: number): void {
         dispatch({
             type: 'DELETE_BEER',
-            payload: id
+            payload: id,
         });
     }
 
     function addBeer(beer: any): void {
         dispatch({
             type: 'ADD_BEER',
-            payload: beer
+            payload: beer,
         });
     }
 
     function replaceBeers(beers: any[]): void {
         dispatch({
             type: 'REPLACE_BEERS',
-            payload: beers
+            payload: beers,
         })
     }
 
     function addBeersToArray(beers: any[]): void {
         dispatch({
             type: 'ADD_BEERS_TO_ARRAY',
-            payload: beers
+            payload: beers,
         })
     }
 
+    function login(username: string): void {
+        dispatch({
+            type: 'LOGIN',
+            payload: username,
+        })
+    }
+
+    function logout(): void {
+        dispatch({
+            type: 'LOGOUT',
+        })
+    }
+
+    function addTransaction(transaction: ITransaction): void {
+        dispatch({
+            type: 'ADD_TRANSACTION',
+            payload: transaction,
+        });
+    }
+
+    function removeTransaction(id: string): void {
+        dispatch({
+            type: 'REMOVE_TRANSACTION',
+            payload: id,
+        });
+    }
+
     return (
-    <GlobalContext.Provider value={{beers: state.beers, deleteBeer, addBeer, replaceBeers, addBeersToArray }}>
+    <GlobalContext.Provider value={{
+        beers: state.beers, 
+        deleteBeer, 
+        addBeer, 
+        replaceBeers, 
+        addBeersToArray, 
+        auth: state.auth,
+        login,
+        logout,
+        transactions: state.transactions,
+        addTransaction,
+        removeTransaction,
+        }}>
         {children}
     </GlobalContext.Provider>)
 }

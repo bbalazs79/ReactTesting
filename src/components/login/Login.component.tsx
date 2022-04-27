@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../contexts/GlobalState';
 import './login.style.css';
 
 const Login = () => {
+    let navigate = useNavigate();
+    
+    const { login } = useContext(GlobalContext);
     const [username, setUsername] = useState('');
     const [usernameValid, setUsernameValid] = useState(true);
     const [password, setPassword] = useState('');
@@ -12,9 +17,9 @@ const Login = () => {
             'username': username,
             'password': password,
         }
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('username', data.username);
-        window.location.href='/';
+        login(data.username);
+
+        navigate('/');
     }
 
     function usernameValidation() {

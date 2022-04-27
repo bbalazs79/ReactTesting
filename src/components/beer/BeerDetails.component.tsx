@@ -11,7 +11,6 @@ const BeerDetails = () => {
         axios.get(`https://api.punkapi.com/v2/beers/${params.id}`)
         .then(res => {
             setBeer(res.data[0]);
-            console.log(res.data[0]);
         })
         .catch(error =>{
             console.log(error);

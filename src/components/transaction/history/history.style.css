@@ -1,0 +1,16 @@
+.history-content {
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 405px;
+    margin: 20px auto;
+
+    border: 1px solid #dfdfdf;
+}
+
+.history-content-card {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -2,9 +2,11 @@ import { useContext, useEffect } from "react";
 import './beer.style.css';
 import { GlobalContext } from "../../contexts/GlobalState";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BeerListView = () => {
-    const { beers, replaceBeers } = useContext(GlobalContext);
+  let navigate = useNavigate()
+  const { beers, replaceBeers } = useContext(GlobalContext);
     
     useEffect(() => {
       axios.get('https://api.punkapi.com/v2/beers', {})
@@ -12,14 +14,14 @@ const BeerListView = () => {
         replaceBeers(res.data);
       })
       .catch(error =>{
-          console.log(error);
+        console.log(error);
       });
     }, []);
 
     return (
       <div className="beer-container">
         {beers.map(beer=>(
-            <div className="card" key={beer.id} onClick={()=>window.location.href=`/beer/details/${beer.id}`} >
+            <div className="card" key={beer.id} onClick={()=>navigate(`/beer/details/${beer.id}`)} >
                 <img className="card-img" src={beer.image_url} alt="" />
                 <h4 className="card-name">{beer.name}</h4>
                 <p>ABV: { beer.abv }%</p>
