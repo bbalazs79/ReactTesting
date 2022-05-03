@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../loading/Loding.component";
 import './beer-details.style.css';
 
 const BeerDetails = () => {
@@ -19,7 +20,7 @@ const BeerDetails = () => {
 
     return (
         <div className="page">
-         {beer && <>
+         {beer ? <>
             <h1>{ beer.name }</h1>
             <h2 className="subtitle">{ beer.tagline }</h2>
             <div className="container">
@@ -38,7 +39,7 @@ const BeerDetails = () => {
                     </ul>
                 </div>    
             </div>
-         </>}    
+         </> : <Loading /> }    
         </div>
     );
   }

@@ -1,29 +1,14 @@
-import { useState } from 'react';
+import useLocalStorage from '../../hooks/LocalStorage.hook';
 import './testform.style.css';
 
 const Testform = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-
-    const submitValue = () => {
-        const data = {
-            'firstName': firstName,
-            'lastName': lastName,
-        }
-    }
+    const [value, setValue] = useLocalStorage('testInput', '');
 
     return (
         <form action="" className="form">
-            <label> First Name:
-                <input type="text" onChange={e => setFirstName(e.target.value)}/>
+            <label> TestInput:
+                <input type="text" value={value} onChange={e => setValue(e.target.value)}/>
             </label>
-            
-            
-            <label> Last Name: 
-                <input type="text" onChange={e => setLastName(e.target.value)} />
-            </label>
-
-            <input className='form-submit' type="button" value="Submit" onClick={submitValue}/>
         </form>
     );
   }

@@ -8,6 +8,7 @@ import PageNotFound from './components/page-not-found/page-not-found.component';
 import BeerDetails from './components/beer/BeerDetails.component';
 import { GlobalProvider } from './contexts/GlobalState';
 import Transaction from './components/transaction/Transaction.component';
+import Testform from './components/testform/Testform.component';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/beer' element={<BeerListView />} />
+            <Route path='/test' element={<Testform />} />
             <Route path='/transaction' element={<Transaction />} />
             <Route path='/login' element={<Login />} />
             <Route path='/beer/details/:id' element={<BeerDetails />} />
