@@ -1,21 +1,19 @@
 import { useContext, useEffect } from "react";
 import './beer.style.css';
 import { GlobalContext } from "../../contexts/GlobalState";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getBeersFromLocalExpress } from "../../services/Beer.service";
 
 const BeerListView = () => {
   let navigate = useNavigate()
   const { beers, replaceBeers } = useContext(GlobalContext);
     
     useEffect(() => {
-      axios.get('https://api.punkapi.com/v2/beers', {})
-      .then(res => {
-        replaceBeers(res.data);
-      })
-      .catch(error =>{
-        console.log(error);
+      getBeersFromLocalExpress()
+      .then(response =>{
+        replaceBeers(response);
       });
+      
     }, []);
 
     return (

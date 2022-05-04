@@ -1,21 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../contexts/GlobalState";
 import Loading from "../loading/Loding.component";
 import './beer-details.style.css';
 
 const BeerDetails = () => {
+    const { beers } = useContext(GlobalContext);
     const [beer, setBeer] = useState<any>();
     const params = useParams();
 
     useEffect(()=>{
-        axios.get(`https://api.punkapi.com/v2/beers/${params.id}`)
-        .then(res => {
-            setBeer(res.data[0]);
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+        const data = beers.filter((beer) => beer.id == params.id);
+        setBeer(data[0]);
     },[]);
 
     return (

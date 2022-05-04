@@ -1,11 +1,22 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export function getBeers() {
-    axios.get('https://api.punkapi.com/v2/beers', {})
-    .then(res => {
-        return res.data;
-    })
-    .catch(error =>{
-        console.log(error);
-    });
+    const promise = axios.get('https://api.punkapi.com/v2/beers');
+    const data = promise.then(response => response.data);
+    
+    return data;
+}
+
+export function getBeer(id: number | string) {
+    const promise = axios.get(`https://api.punkapi.com/v2/beers/${id}`);
+    const data = promise.then(response => response.data);
+
+    return data;
+}
+
+export function getBeersFromLocalExpress() {
+    const promise =  axios.get('http://localhost:8080/beer');
+    const data = promise.then(response => response.data);
+    
+    return data;
 }
